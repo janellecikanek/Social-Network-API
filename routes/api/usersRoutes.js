@@ -11,8 +11,8 @@ const {
 } = require("../../controllers/usersController");
 
 // /api/users
-router.
-route("/")
+router
+.route("/")
 .get(getAllUser)
 .post(createUser);
 
