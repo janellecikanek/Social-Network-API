@@ -20,9 +20,11 @@ When I test API POST and DELETE routes in Insomnia then I am able to successfull
 Express, Mongoose and Insomnia were used in creating this API. 
 
 ## Usage
+
+  Video Demonstration: https://drive.google.com/file/d/13UsLhSlxSjBrLFYx4-YMvAOEYokRmSTW/view
     
-   ![alt screenshot](./ScreenShotEcommerce.png)
-   Video Demonstration: https://drive.google.com/file/d/13UsLhSlxSjBrLFYx4-YMvAOEYokRmSTW/view
+   ![alt screenshot](./images/socialNetwork.png)
+ 
 
 ## Credits
 
