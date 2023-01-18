@@ -1,23 +1,44 @@
-const { Thoughts, Reactions } = require("../models");
+const { Thought, Reaction } = require("../models");
 
-module.exports = {
-  // Get all thoughts
+const thoughtsReactionsController = {
+  // get all thoughts
   getAllThoughts(req, res) {
-    Thoughts.find()
-      .then((thoughts) => res.json(thoughts))
-      .catch((err) => res.status(500).json(err));
+    Thought.find({})
+      .populate({
+        path: 'thoughts',
+        select: '-__v'
+      })
+      .select('-__v')
+      .sort({ _id: -1 })
+      .then(dbThoughtsData => res.json(dbThoughtsdata))
+      .catch(err => {
+        console.log(err);
+        res.sendStatus(400);
+      });
   },
+
+  // Get all thoughts
+  // getAllThought(req, res) {
+  //   Thought.find()
+  //     .then((thought) => res.json(thought))
+  //     .catch((err) => res.status(500).json(err));
+ // },
   // Get a thought
-  getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId })
-      .select("-__v")
-      .then((thought) =>
-        !thought
-          ? res.status(404).json({ message: "No thought with that ID" })
-          : res.json(thought)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
+ // get one thought by id
+ getThoughtById({ params }, res) {
+  Thought.findOne({ _id: params.id })
+    .populate({
+      path: 'thoughts',
+      select: '-__v'
+    })
+    .select('-__v')
+    .then(dbThoughtData => res.json(dbThoughtData))
+    .catch(err => {
+      console.log(err);
+      res.sendStatus(400);
+    });
+},
+
   // Create a thought
   createThought(req, res) {
     Thought.create(req.body)
@@ -37,7 +58,14 @@ module.exports = {
       )
       .then(() => res.json({ message: "Thought deleted!" }))
       .catch((err) => res.status(500).json(err));
+  // },
+
+  // deleteThought({ params }, res) {
+  //   Thought.findOneAndDelete({ _id: params.id })
+  //     .then(dbThoughtData => res.json(dbThoughtData))
+  //     .catch(err => res.json(err));
   },
+
   // Update a thought
   updateThought(req, res) {
     Thought.findOneAndUpdate(
@@ -52,9 +80,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-};
 
-module.exports = {
   // Create a reaction
   createReaction(req, res) {
     Reaction.create(req.body)
@@ -76,3 +102,5 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 };
+
+module.exports = thoughtsReactionsController;

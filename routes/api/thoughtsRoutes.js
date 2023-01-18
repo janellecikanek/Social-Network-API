@@ -2,13 +2,13 @@ const router = require('express').Router();
 
 const {
   getAllThoughts,
-  getSingleThought,
+  getThoughtById,
   createThought,
   updateThought,
-  deletethought,
-  createReaction,
+  deleteThought,
+  addReaction,
   removeReaction,
-} = require("../../controllers/thoughtsReactionsController.js");
+} = require("../../controllers/thoughtsReactionsController");
 
 //router.route("/").get(getAllThoughts).post(createThought);
 // api/thoughts
@@ -25,16 +25,16 @@ router
   .delete(deleteThought);
 
 // /api/reactions/<thoughtsId>
-router.route("/:thoughtsId").post(addReaction);
+//router.route("/:thoughtsId").post(addReaction);
 
 // /api/comments/<thoughtsId>/<reactionsId>
 router
   .route("/:thoughtsId/:reactionId")
-  .put(addReaction)
-  .delete(removeReaction);
+  //.put(addReaction)
+ //.delete(removeReaction);
 
 // /api/comments/<pizzaId>/<commentId>/<replyId>
-router.route("/:usersId/:thoughtsId/:reactionsId").delete(removeReaction);
+//router.route("/:usersId/:thoughtsId/:reactionsId").delete(removeReaction);
 
 // /api/thoughts/<userId>
 //router.route('/:userId').post(addThought);
