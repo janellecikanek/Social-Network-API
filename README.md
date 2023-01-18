@@ -20,12 +20,8 @@ When I test API POST and DELETE routes in Insomnia then I am able to successfull
 Express, Mongoose and Insomnia were used in creating this API. 
 
 ## Usage
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+    
+   ![alt screenshot](./ScreenShotEcommerce.png)
    Video Demonstration: https://drive.google.com/file/d/13UsLhSlxSjBrLFYx4-YMvAOEYokRmSTW/view
 
 ## Credits
