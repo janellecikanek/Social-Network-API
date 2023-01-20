@@ -1,10 +1,10 @@
-const { User } = require("../models");
+const { User, Reaction } = require("../models");
 
 const userController = {
   getAllUser(req, res) {
     User.find({})
       .populate({
-        path: "thought",
+        path: "thoughts",
         select: "-__v",
       })
       .select("-__v")
@@ -18,7 +18,7 @@ const userController = {
   getUserById({ params }, res) {
     User.findOne({ _id: params.id })
       .populate({
-        path: "thought",
+        path: "thoughts",
         select: "-__v",
       })
       .select("-__v")
@@ -64,10 +64,10 @@ const userController = {
       .catch((err) => res.json(err));
   },
   // add friend
-  addFriend({ params, body }, res) {
-    Comment.findOneAndUpdate(
+  addFriend({ params}, res) {
+    User.findOneAndUpdate(
       { _id: params.friendId },
-      { $push: { replies: body } },
+      { $push: { friends: params.friendId } },
       { new: true, runValidators: true }
     )
       .then((dbUserData) => {
@@ -81,9 +81,9 @@ const userController = {
   },
   // remove friend
   removeFriend({ params }, res) {
-    Friend.findOneAndUpdate(
+    User.findOneAndUpdate(
       { _id: params.friendId },
-      { $pull: { replies: { friendId: params.friendId } } },
+      { $pull: { friends: params.friendId } },
       { new: true }
     )
       .then((dbUserData) => res.json(dbUserData))
