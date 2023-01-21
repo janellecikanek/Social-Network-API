@@ -21,7 +21,7 @@ Express, Mongoose and Insomnia were used in creating this API.
 
 ## Usage
 
-  Video Demonstration: https://drive.google.com/file/d/13UsLhSlxSjBrLFYx4-YMvAOEYokRmSTW/view  
+  Video Demonstration: https://drive.google.com/file/d/1jGZO9VYzAsEkoHo6iiTM3HYrZDhFjDyE/view
   
     
    ![alt screenshot](./images/socialNetwork.png)
@@ -29,7 +29,8 @@ Express, Mongoose and Insomnia were used in creating this API.
 
 ## Credits
 
-No other collaborators at this time.
+Janelle Cikanek
+https://github.com/janellecikanek
 
 ## License
 
