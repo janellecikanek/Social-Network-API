@@ -17,13 +17,6 @@ const thoughtsReactionsController = {
       });
   },
 
-  // Get all thoughts
-  // getAllThought(req, res) {
-  //   Thought.find()
-  //     .then((thought) => res.json(thought))
-  //     .catch((err) => res.status(500).json(err));
-  // },
-  // Get a thought
   // get one thought by id
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
@@ -59,12 +52,6 @@ const thoughtsReactionsController = {
         res.json(thought)
       })
       .catch((err) => res.status(500).json(err));
-    // },
-
-    // deleteThought({ params }, res) {
-    //   Thought.findOneAndDelete({ _id: params.id })
-    //     .then(dbThoughtData => res.json(dbThoughtData))
-    //     .catch(err => res.json(err));
   },
 
   // Update a thought
